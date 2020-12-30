@@ -12,13 +12,13 @@ void limpaTela(){
 
 string retornaPalavraAleatoria(){
 
-     //Vetor com palavras disponíveis
+     //Vetor com palavras disponÃ­veis
     string palavras[3] = {"abacaxi", "manga", "morango"};
 
     //Indice gerado no intervalo {0,1,2}
     int indiceAleatorio = rand() % 3;
 
-    //Exibe a palavra aleatória
+    //Exibe a palavra aleatÃ³ria
     //cout << palavras[indiceAleatorio];
 
     return palavras[indiceAleatorio];
@@ -29,7 +29,7 @@ string retornaPalavraComMascara(string palavra, int tamanhoDaPalavra){
     int cont = 0;
     string palavraComMascara;
 
-    //Coloca uma máscara
+    //Coloca uma mÃ¡scara
     while(cont < tamanhoDaPalavra){
         palavraComMascara += "_";
         cont++;
@@ -59,7 +59,7 @@ int jogar(int numeroDeJogadores){
     //Palavra a ser adivinhada
     string palavra;
 
-    //Confere o número de jogadores
+    //Confere o nÃºmero de jogadores
     if(numeroDeJogadores == 1){
 
         //Palavra a ser adivinhada
@@ -78,15 +78,15 @@ int jogar(int numeroDeJogadores){
     //Palavra mascarada
     string palavraComMascara = retornaPalavraComMascara(palavra, tamanhoDaPalavra);
 
-    ///Variáveis Gerais
-    int tentativas = 0, maximoDeTentativas = 10;            //Número de tentativas e erros
-    int cont = 0;                                           //Auxiliar para laços de repetição
-    char letra;                                             //Letra arriscada pelo usuário
-    int opcao;                                              //Opções finais
+    ///VariÃ¡veis Gerais
+    int tentativas = 0, maximoDeTentativas = 10;            //NÃºmero de tentativas e erros
+    int cont = 0;                                           //Auxiliar para laÃ§os de repetiÃ§Ã£o
+    char letra;                                             //Letra arriscada pelo usuÃ¡rio
+    int opcao;                                              //OpÃ§Ãµes finais
     string letrasJaArriscadas;                              //Acumula as tentativas do jogador
     string mensagem = "Bem vindo ao jogo!";                 //Feedback do jogador
     string palavraArriscada;                                //Tentativa de arriscar a palavra completa
-    bool jaDigitouLetra = false, acertouLetra = false;      //Auxiliar para saber se a letra já foi digitada
+    bool jaDigitouLetra = false, acertouLetra = false;      //Auxiliar para saber se a letra jÃ¡ foi digitada
 
 
     while(palavra != palavraComMascara && maximoDeTentativas - tentativas > 0){
@@ -96,11 +96,11 @@ int jogar(int numeroDeJogadores){
         //Exibe o status atual do jogo
         exibeStatus(palavraComMascara, tamanhoDaPalavra, maximoDeTentativas - tentativas, letrasJaArriscadas,mensagem);
 
-        //Lê um palpite
+        //LÃª um palpite
         cout << "\nDigite uma letra (Ou digite 1 para arriscar a palavra):";
         cin >> letra;
 
-        //Se digitar 1 deixa o usuário arriscar a palavra inteira
+        //Se digitar 1 deixa o usuÃ¡rio arriscar a palavra inteira
         if(letra == '1'){
             cin >> palavraArriscada;
             if(palavraArriscada == palavra){
@@ -110,7 +110,7 @@ int jogar(int numeroDeJogadores){
             }
         }
 
-        //Percorre as letras já arriscadas
+        //Percorre as letras jÃ¡ arriscadas
         for(cont = 0; cont < tentativas; cont++){
 
             //Se encontrar a letra
@@ -118,7 +118,7 @@ int jogar(int numeroDeJogadores){
 
                 mensagem = "Essa letra ja foi digitada!";
 
-                //Indica com a variável booleana
+                //Indica com a variÃ¡vel booleana
                 jaDigitouLetra = true;
 
             }
@@ -127,7 +127,7 @@ int jogar(int numeroDeJogadores){
         //Se for uma letra nova
         if(jaDigitouLetra == false){
 
-            //Incrementa as letras já arriscadas
+            //Incrementa as letras jÃ¡ arriscadas
             letrasJaArriscadas += tolower(letra);
 
             //Percorre a palavra real e
@@ -136,7 +136,7 @@ int jogar(int numeroDeJogadores){
                 //Se a letra existir na palavra escondida
                 if(palavra[cont] == tolower(letra)){
 
-                    //Faço aquela letra aparecer na palavraComMascara
+                    //FaÃ§o aquela letra aparecer na palavraComMascara
                     palavraComMascara[cont] = palavra[cont];
 
                     acertouLetra = true;
@@ -168,7 +168,7 @@ int jogar(int numeroDeJogadores){
     if(palavra == palavraComMascara){
 
         limpaTela();
-        cout << "Parabens, você venceu!";
+        cout << "Parabens, vocÃª venceu!";
         cout << "\nDeseja reiniciar?";
         cout << "\n1-Sim";
         cout << "\n2-Nao";
@@ -178,7 +178,7 @@ int jogar(int numeroDeJogadores){
     }else{
 
         limpaTela();
-        cout << "Bleh, você perdeu!";
+        cout << "Bleh, vocÃª perdeu!";
         cout << "\nDeseja reiniciar?";
         cout << "\n1-Sim";
         cout << "\n2-Nao";
@@ -190,10 +190,10 @@ int jogar(int numeroDeJogadores){
 
 void menuInicial(){
 
-    //Opção escolhida pelo usuário
+    //OpÃ§Ã£o escolhida pelo usuÃ¡rio
     int opcao = 0;
 
-    //Enquanto o jogador não digita uma opcao válida, mostra o menu novamente
+    //Enquanto o jogador nÃ£o digita uma opcao vÃ¡lida, mostra o menu novamente
     while(opcao < 1 || opcao > 3){
         limpaTela();
         cout << "Bem vindo ao Jogo";
@@ -224,7 +224,7 @@ void menuInicial(){
                 //Mostra informacoes do Jogo
                 cout << "Informacoes do jogo";
                 limpaTela();
-                cout << "Jogo desenvolvido por Joao em 2017";
+                cout << "\n Jogo da Forca";
                 cout << "\n1 - Voltar";
                 cout << "\n2 - Sair";
                 cin >> opcao;
@@ -243,7 +243,7 @@ void menuInicial(){
 
 int main(){
 
-    //Para gerar números realmente aleatórios
+    //Para gerar nÃºmeros realmente aleatÃ³rios
     srand( (unsigned)time(NULL));
 
     menuInicial();
