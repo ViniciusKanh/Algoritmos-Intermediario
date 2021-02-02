@@ -1,7 +1,7 @@
-# Tecnicas-de-Programacao
+# Batalha Naval
 
-![tec](https://github.com/ViniciusKanh/Tecnicas-de-Programacao/blob/main/Captura%20de%20Tela%202016-02-13%20a%CC%80s%2022.18.37.png)
+![tec](https://github.com/ViniciusKanh/Tecnicas-de-Programacao/blob/main/Jogos%20em%20C%2B%2B/Batalha%20Naval/Batalhanaval.gif)
 
-# Logica de Programacao mais intermediario fora do básico.
+# Batalha Naval em C++.
 
-![tec](https://github.com/ViniciusKanh/Tecnicas-de-Programacao/blob/main/SneakyLankyAmericanshorthair-small.gif)
+![tec](https://github.com/ViniciusKanh/Tecnicas-de-Programacao/blob/main/Jogos%20em%20C%2B%2B/Batalha%20Naval/Radar2.gif)
