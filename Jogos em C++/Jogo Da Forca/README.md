@@ -1,7 +1,4 @@
-# Tecnicas-de-Programacao
+# Jogo da Forca
 
-![tec](https://github.com/ViniciusKanh/Tecnicas-de-Programacao/blob/main/Captura%20de%20Tela%202016-02-13%20a%CC%80s%2022.18.37.png)
+![tec](https://github.com/ViniciusKanh/Tecnicas-de-Programacao/blob/main/Imagens/20201230_193514.gif)
 
-# Logica de Programacao mais intermediario fora do básico.
-
-![tec](https://github.com/ViniciusKanh/Tecnicas-de-Programacao/blob/main/SneakyLankyAmericanshorthair-small.gif)

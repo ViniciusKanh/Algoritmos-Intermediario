@@ -43,8 +43,8 @@ while(cont < tamanhopalavra){
 return palavracommascara;
 }
 
-void exibestatus(string palavracommascara,string letraarriscada, int tamanhopalavra, int tentativasrestantes){
-
+void exibestatus(string palavracommascara,string letraarriscada, int tamanhopalavra, int tentativasrestantes,string mensagem){
+ cout<<mensagem<<"\n";
  cout<<"\n A Palavra : "<<palavracommascara<<" \nTamanho: "<<tamanhopalavra;
  cout<<"\nTentativas restante: "<<tentativasrestantes;
 
@@ -60,23 +60,36 @@ void exibestatus(string palavracommascara,string letraarriscada, int tamanhopala
   
 }
 
-void jogarsozinho(){
-string palavra = retornapalavraaleatoria();
+int jogar(int numerojogador){
+  
+  string palavra;
+  
+  if (numerojogador == 1){
+    
+    palavra = retornapalavraaleatoria();
+  }
+else {
+  
+   cout<<"Digite uma Palavra: \n";
+   cin>>palavra;
+  
+}
 
 int tamanhopalavra = palavra.size();
 
 
 string palavracommascara =palavramascarada(palavra, tamanhopalavra);
 
-int tentativas=0,maxtentativas=5;
-int cont=0;
+int tentativas=0,maxtentativas=8;
+int cont=0,opcao;
 char letra;
 string letrajaarriscada;
-bool jadigitouletra=false;
+string mensagem="Bem Vindo ao jogo!";
+bool jaDigitouLetra=false,acertouLetra = false;    ;
 
 while(palavra!=palavracommascara && maxtentativas-tentativas>0){
  limpatela();
-  exibestatus(palavracommascara,letrajaarriscada,tamanhopalavra, maxtentativas-tentativas);
+  exibestatus(palavracommascara,letrajaarriscada,tamanhopalavra, maxtentativas-tentativas,mensagem);
 
   cout<<"\t\nDigite uma Letra: ";
   cin>>letra;
@@ -85,33 +98,51 @@ while(palavra!=palavracommascara && maxtentativas-tentativas>0){
 
     if (letrajaarriscada[cont]==letra){
 
-        cout<<"\t\n\tEssa letra ja foi digitada\n\t";
-         jadigitouletra=true;
+        mensagem="\t\n\tEssa letra ja foi digitada\n\t";
+         jaDigitouLetra=true;
 
     }
 
   }
 
-    if (jadigitouletra==false){
+    if (jaDigitouLetra==false){
       
-      letrajaarriscada+=letra;
+      mensagem="\t\n\tParabens vc acertou uma letra!\n\t";
+      
+      letrajaarriscada+=tolower(letra);
 
   for(cont=0;cont<tamanhopalavra;cont++){
       
-      if(palavra[cont]==letra){
+      if(palavra[cont]==tolower(letra)){
 
     palavracommascara[cont]=palavra[cont];
+    
+     acertouLetra = true;
+
 
       }
     
 
   }
+  
+  if(acertouLetra == false){
+
+                mensagem = "Voce errou uma letra!";
+
+            }else{
+
+                mensagem = "Voce acertou uma letra!";
+
+            }
 
   tentativas++;
 
     } 
   
-  
+         
+        jaDigitouLetra = false;
+        acertouLetra = false;
+
 }
 
 
@@ -148,7 +179,14 @@ cout<<" ██████████████▄░░░░░░░░░
 cout<<" ████████████████▄░░░░░░▄████████████████\n";
 cout<<" ██████████████████▄▄▄▄██████████████████\n";
 cout<<" ████████████████████████████████████████\n";
-cout<<" ████████████████████████████████████████\n";
+cout<<" ████████████████████████████████████████\n\n";
+
+        cout << "\nDeseja reiniciar?";
+        cout << "\n1-Sim";
+        cout << "\n2-Nao \n ";
+        cin >> opcao;
+        return opcao;
+        limpatela();
 
 }
 
@@ -185,7 +223,13 @@ cout<<" █████████████████▀▒▒▒▒▒▒
 cout<<" █████████████████▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒\n";
 cout<<" ████████████████▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒\n";
 cout<<" ████████████████▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒\n";
-
+        cout << "\n\nDeseja reiniciar?";
+        cout << "\n1-Sim";
+        cout << "\n2-Nao \n";
+        cin >> opcao;
+        return opcao;
+        limpatela();
+    }
  
 
 
@@ -193,20 +237,26 @@ cout<<" ████████████████▒▒▒▒▒▒▒▒
 
 
 
-}
-
 
 void MenuInicial(){
 
     int opcao = 0;
   
-while(opcao < 1 || opcao > 3){
+while(opcao < 1 || opcao < 4){
   
 cout<<"                                           \n";
 cout<<"      ╦╔═╗╔═╗╔═╗  ╔╦╗╔═╗  ╔═╗╔═╗╦═╗╔═╗╔═╗  \n";
 cout<<"      ║║ ║║ ╦║ ║   ║║╠═╣  ╠╣ ║ ║╠╦╝║  ╠═╣  \n" ;
 cout<<"     ╚╝╚═╝╚═╝╚═╝  ═╩╝╩ ╩  ╚  ╚═╝╩╚═╚═╝╩ ╩  \n";
 cout<<"                                           \n\n";
+
+cout<<"              ▄▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▄        \n";
+cout<<"             █░░░█░░░░░░░░░░▄▄░██░█       \n";
+cout<<"             █░▀▀█▀▀░▄▀░▄▀░░▀▀░▄▄░█       \n";
+cout<<"             █░░░▀░░░▄▄▄▄▄░░██░▀▀░█        \n";
+cout<<"              ▀▄▄▄▄▄▀─────▀▄▄▄▄▄▄▀         \n\n\n";
+
+
 
 
         cout << "\t\t\t\t\t Bem vindo ao Jogo\n\t";
@@ -225,11 +275,16 @@ cout<<"                                           \n\n";
         
          switch(opcao){
             case 1:
-                jogarsozinho();
+                if (jogar(1)==1){
+                  limpatela();
+                  MenuInicial();
+                };
                 break;
             case 2:
-               // if(jogar(2) == 1){
-             //   }
+               if(jogar(2) == 1){
+                  limpatela();
+                  MenuInicial();  
+              }
                 break;
             case 3:
                 cout << "Algoritmo em C++ que tem a funcao semelhante a de um jogo Popular chamado: JOGO DA FORCA\n\n";
@@ -272,11 +327,42 @@ cout << "                     ,,,,,,,,,.,,,#%%%......,,,,,,,,,.,,,,,/           
                 cout << "\n2 - Sair\n";
                 cin >> opcao;
                 if(opcao == 1){
+                  limpatela();
+                  MenuInicial();
                 }
 
                 break;
             case 4:
-                cout << "Volte Sempre!";
+            
+            limpatela();
+                cout << "\t\tVolte Sempre!\n\n";
+                
+cout<<"▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒\n";
+cout<<"▒▒▄▄▄▒▒▒█▒▒▒▒▄▒▒▒▒▒▒▒▒\n";
+cout<<"▒█▀█▀█▒█▀█▒▒█▀█▒▄███▄▒\n";
+cout<<"░█▀█▀█░█▀██░█▀█░█▄█▄█░\n";
+cout<<"░█▀█▀█░█▀████▀█░█▄█▄█░\n";
+cout<<"████████▀█████████████\n\n";
+
+
+cout<<"$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\n";
+cout<<"$$$$$$$$$$$$$$$$$$$$$$$$_____$$$$\n";
+cout<<"$$$$_____$$$$$$$$$$$$$$$_____$$$$\n";
+cout<<"$$$$_____$$$$$$$$$$$$$$$_____$$$$\n";
+cout<<"$$$$_____$$____$$$____$$_____$$$$\n";
+cout<<"$$$$_____$______$______$_____$$$$\n";
+cout<<"$$$$_____$______$______$_____$$$$\n";
+cout<<"$$$$_____$____$$$$$$$$$$$$$$$$$$$\n";
+cout<<"$$$$_____$___$$___________$$$$$$$\n";
+cout<<"$$$$_____$__$$_______________$$$$\n";
+cout<<"$$$$__________$$_____________$$$$\n";
+cout<<"$$$$___________$$___________$$$$$\n";
+cout<<"$$$$_____________$_________$$$$$$\n";
+cout<<"$$$$$_____________________$$$$$$$\n";
+cout<<"$$$$$$___________________$$$$$$$$\n";
+cout<<"$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\n";
+
+
                 break;
         
 }
@@ -294,5 +380,8 @@ int main()
     MenuInicial();
 
 return 0;
+}
+
+
 }
 
